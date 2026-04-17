@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" role="main">
+        
+        <h1 class="title">Image Converter</h1>
+        <img src="images/logo.webp" alt="Logo" class="logo" width="400">
+        <div class="controls-row">
+            <div class="controls" role="group" aria-label="Image Controls">
+                <button id="loadImageButton" class="btn" aria-label="Load Image">Load Image</button>
+                <div class="slider-container">
+                    <label for="resolutionSlider" class="form-label">Image Resolution</label>
+                    <input type="text" id="resolutionValue" class="form-control" value="300" aria-label="Resolution Value">
+                    <input type="range" id="resolutionSlider" class="form-range" min="10" max="500" value="300" aria-label="Resolution Slider">
+                </div>
+                <div class="slider-container">
+                    <label for="thresholdSlider" class="form-label">Black/White Threshold</label>
+                    <input type="text" id="thresholdValue" class="form-control" value="128" aria-label="Threshold Value">
+                    <input type="range" id="thresholdSlider" class="form-range" min="0" max="255" value="128" aria-label="Threshold Slider">
+                </div>
+                <div class="slider-container">
+                    <label for="noiseReductionSlider" class="form-label">Noise Reduction</label>
+                    <input type="text" id="noiseReductionValue" class="form-control" value="0" aria-label="Noise Reduction Value">
+                    <input type="range" id="noiseReductionSlider" class="form-range" min="0" max="8" value="0" aria-label="Noise Reduction Slider">
+                </div>
+            </div>
+            <div class="invert-container">
+                <label class="form-label">
+                    <input type="checkbox" id="invertImage" class="form-checkbox">
+                    Invert Colors
+                </label>
+                <div class="radio-controls">
+                    <div class="radio-container">
+                        <label class="form-label">
+                            <input type="radio" name="entityType" id="useTransportBelt" class="form-radio" value="transport-belt" checked>
+                            Transport Belt
+                        </label>
+                        <label class="form-label">
+                            <input type="radio" name="entityType" id="usePipe" class="form-radio" value="pipe">
+                            Pipe
+                        </label>
+                        <label class="form-label">
+                            <input type="radio" name="entityType" id="useConcrete" class="form-radio" value="concrete">
+                            Concrete
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Keep the background map hidden but preloadable -->
+        <img id="backgroundMap" src="images/map.JPG" style="display: none;" alt="Background Map" crossorigin="anonymous">
+        <canvas id="imageCanvas" class="canvas" width="500" height="500" role="img" aria-label="Image Canvas"></canvas>
+        <div class="actions" role="group" aria-label="Action Buttons">
+            <button id="generateBlueprintButton" class="btn" aria-label="Generate Blueprint">Generate</button>
+            <button id="copyToClipboardButton" class="btn" aria-label="Copy to Clipboard">Copy to Clipboard</button>
+        </div>
+        <textarea id="outputText" class="form-control" readonly aria-label="Output Text"></textarea>
+        <div class="copyright">@Wesley Jones 2025</div>
+    </div>
+    <input type="file" id="fileInput" accept="image/*" style="display: none;">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.0.4/pako.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

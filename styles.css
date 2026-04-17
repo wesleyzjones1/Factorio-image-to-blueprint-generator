@@ -1,0 +1,284 @@
+@font-face {
+    font-family: 'Sylar Stencil';
+    src: url('fonts/SylarStencil-Regular.woff2') format('woff2'), /* Modern browsers */
+         url('fonts/SylarStencil-Regular.woff') format('woff');   /* Older browsers */
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #90D5FF;
+    --hover-color: #59bae7;
+    --border-color: #555555;
+    --background-gradient: linear-gradient(to bottom, #989fa1, #586668);
+    --font-family: Arial, sans-serif;
+    --font-size: 20px;
+    --container-width: 80vw;
+    --container-height: 100vh;
+    --border-radius: 10px;
+    --transport-belt-color: #ebc068;
+    --pipe-color: #5891c4;
+    --concrete-color: #3a3d3a;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    padding: 0 20px 30px 0;
+    line-height: 1.5;
+    background-image: url('images/background.jpg'); /* Use background image */
+    background-attachment: fixed;
+    background-size: cover;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    width: var(--container-width);
+    height: var(--container-height);
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(50, 50, 50, 0.3);
+    background-color: rgba(211, 211, 211, 0.9); /* Semi-transparent white */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.title {
+    font-family: 'Sylar Stencil';
+    font-size: 2em;
+    margin: 0;
+    padding-top: 10px;
+    text-transform: uppercase;
+    color: #000000;
+    text-shadow: 4px 4px 0 rgba(94, 94, 94, 0.8);
+    letter-spacing: 2px;
+    image-rendering: pixelated;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: none;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: nowrap;
+}
+
+/* Added controls row container */
+.controls-row {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 5px; /* Reduced margin to bring radio controls closer */
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+}
+
+.slider-container .form-label {
+    margin-bottom: 5px;
+}
+
+.slider-container input[type="range"] {
+    width: 200px;
+    height: 20px;
+    margin: 5px 0;
+    -webkit-appearance: none;
+    appearance: none;
+    background: linear-gradient(to right, var(--primary-color) 0%, var(--primary-color) var(--value, 50%), white var(--value, 50%), white 100%);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+}
+
+.slider-container input[type="range"]:hover {
+    background: linear-gradient(to right, var(--hover-color) 0%, var(--hover-color) var(--value, 50%), white var(--value, 50%), white 100%);
+}
+
+slider-container input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 0;
+    height: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.slider-container .form-control {
+    width: 30px;
+    text-align: center;
+    margin: 0px 0;
+    height: 5px;
+    padding: 5px;
+    border-radius: 1px;
+    border: 1px solid #ccc;
+}
+
+.selector-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.selector-container .form-control {
+    width: 150px;
+    text-align: center;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: var(--border-radius);
+    border: 1px solid #ccc;
+}
+
+/* Invert container styling - positioned to right of sliders */
+.invert-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px;
+    padding-top: 0; /* Remove top padding */
+    align-self: flex-start; /* Align container to the top */
+    margin-top: 5px; /* Add small top margin to align with slider labels */
+    gap: 0px; 
+}
+
+.invert-container .form-label {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* Radio controls styling */
+.radio-controls {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding-top: 0;
+}
+
+.radio-container {
+    flex-direction: column; /* Stack radio buttons vertically */
+    align-items: top;
+    gap: 0; /* No gap between radio buttons */
+}
+
+.radio-container .form-label {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    white-space: nowrap;
+    line-height: 1.1; /* Reduced line height to compress vertically */
+}
+
+/* Remove the old checkbox container styling */
+.checkbox-container {
+    display: none;
+}
+
+.checkbox-container .form-label {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    font-size: 1em;  /* Match size with other labels */
+}
+
+.form-checkbox {
+    margin-right: 5px;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn:hover {
+    background-color: var(--hover-color);
+}
+
+.btn:focus {
+    outline: 2px solid var(--hover-color);
+}
+
+#loadImageButton {
+    height: 100%;
+    padding: 3% 20px;
+}
+
+.canvas {
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    width: 500px;
+    height: 500px;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: .4%; /* Shift up by setting a negative margin */
+}
+
+.form-control {
+    width: 100%;
+    height: 30vh;
+    margin-top: auto;
+    resize: none;
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+}
+
+input:focus, textarea:focus {
+    outline: 2px solid var(--hover-color);
+}
+
+/* Remove the threshold-label-container and invert-label styles as they're no longer needed */
+.threshold-label-container {
+    display: none;
+}
+
+.invert-label {
+    display: none;
+}
+
+.Logo {
+    display: flex;
+    align-items: left;
+}
+
+.logo {
+    position: absolute;
+    left: 9em;
+    margin-top: -2em;
+}
+
+.copyright {
+    position: fixed; /* Changed to fixed positioning */
+    bottom: 5px; /* Reduced bottom margin */
+    left: 5px; /* Reduced left margin */
+    font-size: 0.6em; /* Further reduced font size */
+    color: #000000; /* Changed color to solid black */
+    background: none; /* Removed background */
+    z-index: 1000; /* Ensure it's always on top */
+}
